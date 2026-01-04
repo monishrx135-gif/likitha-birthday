@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Likitha</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* center layout */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* card */
+.card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 420px;
+}
+
+/* text */
+h1 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+}
+
+/* input */
+input {
+  padding: 10px;
+  width: 80%;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+/* button */
+button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4f7b;
+  color: white;
+  cursor: pointer;
+}
+
+/* hidden */
+.hidden {
+  display: none;
+}
+
+/* gallery */
+.gallery {
+  margin-top: 25px;
+}
+
+/* images */
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* quotes */
+.quote {
+  text-align: center;
+  font-size: 16px;
+  color: #b0003a;
+  font-weight: bold;
+  margin: 15px 0 8px;
+}
+
+/* hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div class="center" id="passwordBox">
+  <div class="card">
+    <h1>🔐 Enter Password</h1>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <br>
+    <button onclick="checkPassword()">Unlock ❤️</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="center hidden" id="content">
+  <div class="card">
+    <h1>Happy Birthday Likitha 🎉🥳</h1>
+    <p>I love you so much ❤️</p>
+    <button onclick="showPhotos()">Tap to Start ✨</button>
+
+    <div class="gallery hidden" id="gallery">
+
+      <p class="quote">“You are my favorite person ❤️”</p>
+      <img src="photos/1.jpg">
+
+      <p class="quote">“Every moment with you is special 💕”</p>
+      <img src="photos/2.jpg">
+
+      <p class="quote">“My heart feels safe with you 🥰”</p>
+      <img src="photos/3.jpg">
+
+      <p class="quote">“You make my world beautiful 🌸”</p>
+      <img src="photos/4.jpg">
+
+      <p class="quote">“Loving you is my best decision 💖”</p>
+      <img src="photos/5.jpg">
+
+      <p class="quote">“Forever grateful for you 💞”</p>
+      <img src="photos/6.jpg">
+
+    </div>
+  </div>
+</div>
+
+<script>
+function checkPassword() {
+  const pass = document.getElementById("passwordInput").value;
+  if (pass === "monishloveslikitha") {
+    document.getElementById("passwordBox").style.display = "none";
+    document.getElementById("content").classList.remove("hidden");
+    startHearts();
+  } else {
+    alert("Wrong password 💔");
+  }
+}
+
+function showPhotos() {
+  document.getElementById("gallery").classList.remove("hidden");
+}
+
+function startHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+  }, 400);
+}
+</script>
+
+</body>
+  </html>
